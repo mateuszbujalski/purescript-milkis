@@ -7,6 +7,7 @@ module Milkis
   , Headers
   , Redirect
   , Credentials
+  , Agent
   , defaultFetchOptions
   , getMethod
   , postMethod
@@ -70,6 +71,7 @@ type Options =
   , credentials :: Credentials
   , follow :: Int
   , redirect :: Redirect
+  , agent :: Agent
   )
 
 -- | See <https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials>.
@@ -171,3 +173,6 @@ foreign import textImpl :: Response -> Effect (Promise String)
 foreign import headersImpl :: Response -> Object String
 
 foreign import arrayBufferImpl :: Response -> Effect (Promise ArrayBuffer)
+
+-- https://nodejs.org/api/https.html#class-httpsagent
+foreign import data Agent :: Type
